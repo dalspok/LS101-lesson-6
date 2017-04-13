@@ -40,10 +40,16 @@ def empty_squares(brd)
   brd.keys.select { |key| brd[key] == INITIAL_MARKER }
 end
 
+def joinor(arr, default_joiner = ", ", end_joiner = "or")
+  last = arr.pop
+  return last.to_s if arr.empty?
+  arr.join(default_joiner) + default_joiner + end_joiner + ' ' + last.to_s
+end
+
 def player_places_piece!(brd)
   choice = ""
   loop do
-    prompt "Please choose your square from (#{empty_squares(brd).join ', '}):"
+    prompt "Please choose your square from (#{joinor(empty_squares(brd))}):"
     choice = gets.chomp.to_i
     break if empty_squares(brd).include?(choice)
     puts "Sorry, that's not a valid choice."
