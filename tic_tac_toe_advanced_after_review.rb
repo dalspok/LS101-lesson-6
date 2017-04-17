@@ -46,8 +46,9 @@ end
 
 def joinor(arr, default_joiner = ", ", end_joiner = "or")
   last = arr[-1]
-  return last.to_s if arr.size == 0 || arr.size == 1
-  arr[0...-1].join(default_joiner) + default_joiner + end_joiner + ' ' + last.to_s
+  return last.to_s if arr.empty? || arr.size == 1
+  arr[0...-1].join(default_joiner) + default_joiner + end_joiner \
+  + ' ' + last.to_s
 end
 
 def player_places_piece!(board)
@@ -139,7 +140,8 @@ end
 
 def check_starting(who_starts_game)
   system "clear"
-  prompt "Welcome to Tic-Tac-Toe. Who wins #{FINAL_SCORE} games, takes the price."
+  prompt "Welcome to Tic-Tac-Toe. Who wins #{FINAL_SCORE} games, " \
+  "takes the price."
   unless who_starts_game == "choose"
     prompt "Press Enter to start."
     gets
