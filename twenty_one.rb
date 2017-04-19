@@ -1,7 +1,7 @@
 
 LOW_ACE_VALUE = 1
 HIGH_ACE_VALUE = 11
-FINAL_SCORE = 2
+FINAL_SCORE = 5
 DEALER = :Dealer
 PLAYER = :Player
 DRAW = "Draw"
