@@ -1,5 +1,19 @@
-def fake_bin(s)
-  s.chars.map {|char| char.to_i < 5 ? 0 : 1}.join
+def is_prime?(num)
+  counter = 2
+  while counter < num
+    return false if num % counter == 0
+    counter += 1
+  end
+  true
 end
 
-p fake_bin("78693635333")
+def prime_array(arr)
+  arr.select { |num| is_prime?(num)  }
+end
+
+def how_many_primes(arr)
+  prime_array(arr).count
+end
+
+p how_many_primes [2,3,4,5]
+
