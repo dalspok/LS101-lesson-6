@@ -39,8 +39,8 @@ def display_cards(hand)
   puts "  ----- " * s
 end
 
-def display_hand(who, hand, score)
-  puts "#{who.to_s.upcase}"
+def display_hand(participant, hand, score)
+  puts "#{participant.to_s.upcase}"
   is_covered = hand.include? "?"
   hand = cover_last_card(hand) if is_covered
   display_cards(hand)
@@ -66,7 +66,7 @@ def check_player_choice
   end
 end
 
-def check_finish?(score)
+def finish?(score)
   return true if get_winner(score)
   loop do
     puts
@@ -109,12 +109,7 @@ end
 
 def card_value(card, ace_value)
   return card.to_i unless card.to_i == 0
-  case card
-  when "Ace"
-    ace_value
-  else
-    10
-  end
+  card == "Ace" ? ace_value : 10
 end
 
 def sum_cards(hand)
@@ -131,8 +126,8 @@ def busted?(hand)
   sum_cards(hand) > 21
 end
 
-def increment(score, who)
-  score[who] += 1
+def increment(score, participant)
+  score[participant] += 1
 end
 
 def evaluate_not_busted!(score, dealer_hand, player_hand)
@@ -194,6 +189,6 @@ loop do
 
   # Evaluation
   evaluate_play!(score, dealer_hand, player_hand)
-  break if check_finish?(score)
+  break if finish?(score)
 end
 finish_game(score)
