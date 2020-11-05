@@ -1,19 +1,10 @@
-def is_prime?(num)
-  counter = 2
-  while counter < num
-    return false if num % counter == 0
-    counter += 1
-  end
-  true
+
+def joinor(arr, char_between = ", ", ending_char = "or")
+  starting_seq = arr[0..-2].join(char_between)
+  "#{starting_seq}#{char_between}#{ending_char} #{arr.last}"
 end
 
-def prime_array(arr)
-  arr.select { |num| is_prime?(num)  }
-end
-
-def how_many_primes(arr)
-  prime_array(arr).count
-end
-
-p how_many_primes [2,3,4,5]
-
+p joinor([1, 2])                   # => "1 or 2"
+p joinor([1, 2, 3])                # => "1, 2, or 3"
+p joinor([1, 2, 3], '; ')          # => "1; 2; or 3"
+p joinor([1, 2, 3], ', ', 'and')   # => "1, 2, and 3"
