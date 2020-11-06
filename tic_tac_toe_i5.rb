@@ -40,7 +40,7 @@ def display_board(brd)
 end
 
 def empty_squares(board)
-  board.select {|_, marker| marker == EMPTY_MARKER}.keys
+  board.select { |_, marker| marker == EMPTY_MARKER }.keys
 end
 
 def player_place_piece!(board)
@@ -76,26 +76,23 @@ end
 
 def detect_winner(board)
   if WINNING_LINES.any? do |squares|
-    board.values_at(*squares).count(PLAYER_MARKER) == 3
-   end
-   "Player"
+       board.values_at(*squares).count(PLAYER_MARKER) == 3
+     end
+    "Player"
   elsif WINNING_LINES.any? do |squares|
-    board.values_at(*squares).count(COMPUTER_MARKER) == 3
-   end
-   "Computer"
-  else
-    nil
+          board.values_at(*squares).count(COMPUTER_MARKER) == 3
+        end
+    "Computer"
   end
 end
 
 def display_results(board)
   if someone_won?(board)
     puts "#{detect_winner(board)} won!"
-    puts
   else
     puts "It's a tie"
-    puts
   end
+  puts
 end
 
 def play_again?
@@ -103,7 +100,7 @@ def play_again?
   choice = ''
   loop do
     choice = gets.chomp.downcase
-    break if %w(y n).include? choice
+    break if %w[y n].include? choice
     puts "Incorrect choice. Please try again."
     puts
   end
@@ -128,6 +125,3 @@ loop do
 end
 
 puts "Thank you for playing."
-
-
-
